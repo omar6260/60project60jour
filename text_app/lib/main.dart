@@ -13,7 +13,7 @@ class TextExample extends StatelessWidget {
       'Simple Text',
       textAlign: TextAlign.center,
       style: TextStyle(
-        color: Colors.blue,
+        color: Colors.red,
         fontSize: 30.0,
         fontStyle: FontStyle.italic,
         decoration: TextDecoration.none,
