@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(home: ImageExample()));
-}
+void main() => runApp(const MyApp());
 
-class ImageExample extends StatelessWidget {
-  const ImageExample({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(8),
-      children: <Widget>[
-        const ListTile(
-          title: Text('image de profit'),
+    var title = 'Web Images';
+
+    return MaterialApp(
+      title: title,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
         ),
-        Card(
-          child: Image.asset('../assets/2.jpg'),
-        )
-      ],
+        body: Image.network('https://picsum.photos/250?image=9'),
+      ),
     );
   }
 }
