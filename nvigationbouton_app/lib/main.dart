@@ -1,52 +1,57 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(home: DrawerExample()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class DrawerExample extends StatefulWidget {
+  DrawerExample({Key? key}) : super(key: key);
 
+  @override
+  _DrawerExampleState createState() => _DrawerExampleState();
+}
+
+class _DrawerExampleState extends State<DrawerExample> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MainPage(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Drawer'),
+        centerTitle: true,
+        backgroundColor: Colors.lightBlue,
+        elevation: 0.0,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: const <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.lightBlue),
+              child: Text(
+                'Widget Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.favorite_border),
+              title: Text('like'),
+            ),
+            ListTile(
+              leading: Icon(Icons.face),
+              title: Text('flutterist'),
+            ),
+            ListTile(
+              leading: Icon(Icons.subscriptions),
+              title: Text('subscriptions'),
+            ),
+          ],
+        ),
+      ),
     );
-  }
-}
-
-class MainPage extends StatefulWidget {
-  MainPage({Key? key}) : super(key: key);
-
-  @override
-  _MainPageState createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  int bottomSelectedIndex = 0;
-  String title = 'Home';
-  List<String> titles = ['Home', 'Product', 'Settings'];
-  PageController pageController = PageController(
-    initialPage: 0,
-    keepPage: true,
-  );
-  void pageChanged(int index) {
-    setState(() {
-      bottomSelectedIndex = index;
-    });
-  }
-
-  Widget buildPageView() {
-    return PageView(
-      controller: pageController,
-      onPageChanged: (index) {
-        pageChanged(index);
-      },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
